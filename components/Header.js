@@ -3,7 +3,8 @@ import loadAssets from "../logics/Assetsloader";
 import { HeaderButton } from "./Buttons";
 import { useState, useEffect } from "react";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-
+import HomeScreen from "../pages/Home";
+import ResultScreen from "../pages/Result";
 export default function Header({ setScreen }) {
     const assets = loadAssets();
     const [search_is_pressed, setPressed] = useState(false);
@@ -50,19 +51,19 @@ export default function Header({ setScreen }) {
                 </Text>
                 <Image
                     style={styles.logo}
-                    source={require("../assets/logo.png")}
+                    source={assets.logo}
                     resizeMode="contain"
                 />
             </View>
 
             {/* Right Container with Buttons */}
             <View style={styles.rightContainer}>
-                <HeaderButton onClick={() => { console.log("go home") }} content="Home" />
+                <HeaderButton onClick={() => { setScreen(<HomeScreen setScreen={setScreen} />) }} content="Home" />
                 {search_is_pressed ? (
                     <View style={{ alignItems: "center", flexDirection: 'row' }}>
                         <FontAwesome name="search" size={24} color="black" />
                         <TextInput
-                            style={styles.textInput}
+                            style={[styles.textInput, { fontFamily: assets.normFont }]}
                             value={textInputValue}
                             onChangeText={(newValue) => {
                                 setTextInputValue(newValue); // Update the value
@@ -70,7 +71,7 @@ export default function Header({ setScreen }) {
                             placeholder="Type to search..."
                             onEndEditing={() => setPressed(false)} // Hide TextInput when user stops editing
                             onSubmitEditing={(value) => {
-                                console.log(textInputValue)
+                                setScreen(<ResultScreen search={textInputValue} />)
                                 setTextInputValue("")
                                 setPressed(false)
                             }}
