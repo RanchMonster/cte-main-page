@@ -13,7 +13,7 @@ export default function HomeScreen() {
   return (
     <View style={styles.main}>
       {/* Scrollable Large Text */}
-      <ScrollView style={[styles.largeTextContainer,{backgroundColor:assets.surface}]} showsVerticalScrollIndicator={false}>
+      <ScrollView style={[styles.largeTextContainer, { backgroundColor: assets.surface }]} showsVerticalScrollIndicator={false}>
         <Text style={[styles.largeText, { fontFamily: assets.normFont, color: assets.text }]}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in mauris quis sapien
           maximus scelerisque vel ut urna. Nunc convallis libero in velit posuere, eget posuere
