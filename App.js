@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useColorScheme } from 'react-native';
 import Loading from './components/Loading';
 import loadAssets from './logics/Assetsloader';
+import HomeScreen from './pages/Home';
 export default function App() {
   const asstes = loadAssets()
   if (!asstes) {
@@ -13,6 +14,7 @@ export default function App() {
     return (
       <View style={[styles.container,{backgroundColor:asstes.background}]}>
         <Header />
+        <HomeScreen/>
         <StatusBar hidden={true} />
       </View>
     );
