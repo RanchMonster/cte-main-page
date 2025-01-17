@@ -1,8 +1,9 @@
 import React from "react";
 import { Text, StyleSheet, View, FlatList, ScrollView, Dimensions } from "react-native";
 import loadAssets from "../logics/Assetsloader";
+import { CourseButton } from "../components/Buttons";
 
-export default function HomeScreen() {
+export default function HomeScreen({ setScreen }) {
   const assets = loadAssets();
   const courses = Array.from({ length: 10 }, (_, i) => ({
     name: `Course ${i + 1}`,
@@ -28,14 +29,7 @@ export default function HomeScreen() {
         data={courses}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => (
-          <View style={[styles.courseCard, { backgroundColor: assets.surface }]}>
-            <Text style={[styles.courseName, { color: assets.text, fontFamily: assets.normFont }]}>
-              Course: {item.name}
-            </Text>
-            <Text style={[styles.courseDescription, { color: assets.text }]}>
-              Description: {item.description}
-            </Text>
-          </View>
+          (<CourseButton name={item.name} description={item.description} />)
         )}
         showsVerticalScrollIndicator={false}
       />
@@ -65,20 +59,5 @@ const styles = StyleSheet.create({
   courseList: {
     flex: 1,
   },
-  courseCard: {
-    marginBottom: 10,
-    padding: 15,
-    borderRadius: 10,
-    borderWidth: 1,
-  },
-  courseName: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 5,
-  },
-  courseDescription: {
-    fontSize: 14,
-    lineHeight: 20,
-    textAlign: "justify",
-  },
+
 });
