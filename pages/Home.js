@@ -2,13 +2,14 @@ import React from "react";
 import { Text, StyleSheet, View, FlatList, ScrollView, Dimensions } from "react-native";
 import loadAssets from "../logics/Assetsloader";
 import { CourseButton } from "../components/Buttons";
+import CourseScreen from "./Course";
 
 export default function HomeScreen({ setScreen }) {
   const assets = loadAssets();
   const courses = Array.from({ length: 10 }, (_, i) => ({
     name: `Course ${i + 1}`,
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fermentum erat vel pretium consectetur. Nullam auctor nec leo a ornare. Sed quis pulvinar tellus. Nulla posuere augue a scelerisque vehicula. Phasellus euismod sollicitudin lorem, accumsan molestie erat. In hac habitasse platea dictumst. Morbi nulla sem, aliquet sit amet quam a, malesuada porttitor sapien.",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fermentum erat vel pretium consectetur. Nullam auctor nec leo a ornare. Sed quis pulvinar tellus. Nulla posuere augue a scelerisque vehicula. Phasellus euismod sollicitudin lorem, accumsan molestie erat. In hac habitasse platea dictumst. Morbi nulla sem, aliquet sit amet quam a, malesuada porttitor sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fermentum erat vel pretium consectetur. Nullam auctor nec leo a ornare. Sed quis pulvinar tellus. Nulla posuere augue a scelerisque vehicula. Phasellus euismod sollicitudin lorem, accumsan molestie erat. In hac habitasse platea dictumst. Morbi nulla sem, aliquet sit amet quam a, malesuada porttitor sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fermentum erat vel pretium consectetur. Nullam auctor nec leo a ornare. Sed quis pulvinar tellus. Nulla posuere augue a scelerisque vehicula. Phasellus euismod sollicitudin lorem, accumsan molestie erat. In hac habitasse platea dictumst. Morbi nulla sem, aliquet sit amet quam a, malesuada porttitor sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fermentum erat vel pretium consectetur. Nullam auctor nec leo a ornare. Sed quis pulvinar tellus. Nulla posuere augue a scelerisque vehicula. Phasellus euismod sollicitudin lorem, accumsan molestie erat. In hac habitasse platea dictumst. Morbi nulla sem, aliquet sit amet quam a, malesuada porttitor sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fermentum erat vel pretium consectetur. Nullam auctor nec leo a ornare. Sed quis pulvinar tellus. Nulla posuere augue a scelerisque vehicula. Phasellus euismod sollicitudin lorem, accumsan molestie erat. In hac habitasse platea dictumst. Morbi nulla sem, aliquet sit amet quam a, malesuada porttitor sapien.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fermentum erat vel pretium consectetur. Nullam auctor nec leo a ornare. Sed quis pulvinar tellus. Nulla posuere augue a scelerisque vehicula. Phasellus euismod sollicitudin lorem, accumsan molestie erat. In hac habitasse platea dictumst. Morbi nulla sem, aliquet sit amet quam a, malesuada porttitor sapien.",
   }));
 
   return (
@@ -29,7 +30,7 @@ export default function HomeScreen({ setScreen }) {
         data={courses}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => (
-          (<CourseButton name={item.name} description={item.description} />)
+          (<CourseButton name={item.name} description={item.description} onClick={() => { setScreen(<CourseScreen name={item.name} description={item.description} />) }} />)
         )}
         showsVerticalScrollIndicator={false}
       />

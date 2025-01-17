@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable } from "react-native"
+import { View, Text, StyleSheet, Pressable, Dimensions } from "react-native"
 import loadAssets from "../logics/Assetsloader";
 export type ButtonProps = {
     onClick: () => void
@@ -37,7 +37,7 @@ export function CourseButton(props: CourseButtonProps): JSX.Element {
         </Pressable>
     );
 }
-
+const { height: screenHeight } = Dimensions.get("window");
 const styles = StyleSheet.create({
     buttonStyle: {
         flex: 1,
@@ -58,6 +58,8 @@ const styles = StyleSheet.create({
         padding: 15,
         borderRadius: 10,
         borderWidth: 1,
+        maxHeight: screenHeight * 0.15,
+        overflow: "hidden"
     },
     courseName: {
         fontSize: 18,
