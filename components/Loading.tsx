@@ -1,11 +1,13 @@
-import { View, ActivityIndicator, StyleSheet, useColorScheme } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, useColorScheme, Text, TextStyle } from 'react-native';
 // import { Colors } from '../assets/Styles';
-
-export default function Loading(): JSX.Element {
-    const color = useColorScheme() === 'light' ? 'white' : 'dark';
+export type LoadingProps = {
+    textStyles?: TextStyle
+}
+export default function Loading(props: LoadingProps): JSX.Element {
     return (
         <View style={styles.container}>
             <ActivityIndicator size="large" color="blue" />
+            <Text style={props.textStyles}>Loading please wait</Text>
         </View>
     );
 }
