@@ -8,13 +8,17 @@ import loadAssets from './logics/Assetsloader';
 import HomeScreen from './pages/Home';
 export default function App() {
   const asstes = loadAssets()
+  const [screen, setScreen] = useState(undefined)
+  if (!screen) {
+    setScreen(<HomeScreen setScreen={setScreen} />)
+  }
   if (!asstes) {
     return <Loading></Loading>
   } else {
     return (
-      <View style={[styles.container,{backgroundColor:asstes.background}]}>
-        <Header />
-        <HomeScreen/>
+      <View style={[styles.container, { backgroundColor: asstes.background }]}>
+        <Header setScreen={setScreen} />
+        {screen}
         <StatusBar hidden={true} />
       </View>
     );
