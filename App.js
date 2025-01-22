@@ -6,6 +6,7 @@ import { useColorScheme } from 'react-native';
 import Loading from './components/Loading';
 import loadAssets from './logics/Assetsloader';
 import HomeScreen from './pages/Home';
+import Footer from './components/footer';
 export default function App() {
   const asstes = loadAssets()
   const [screen, setScreen] = useState(undefined)
@@ -20,6 +21,8 @@ export default function App() {
         <Header setScreen={setScreen} />
         {screen}
         <StatusBar hidden={true} />
+        <Footer></Footer>
+
       </View>
     );
   }
@@ -31,5 +34,5 @@ const styles = StyleSheet.create({
     // backgroundColor: '#fff',
     // alignItems: 'center',
     // justifyContent: 'center',
-  },
+  }
 });
