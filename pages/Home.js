@@ -25,6 +25,9 @@ export default function HomeScreen({ setScreen }) {
       </ScrollView>
 
       {/* Course List */}
+      <View style={[{ backgroundColor: assets.surface }, styles.coursesHeader]}>
+        <Text style={[styles.coursesHeaderText, { fontFamily: assets.boldFont, color: assets.text }]}>Courses</Text>
+      </View>
       <FlatList
         style={styles.courseList}
         data={courses}
@@ -46,11 +49,21 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   largeTextContainer: {
-    maxHeight: screenHeight * 0.4, // Limit the height to 40% of the screen
+    maxHeight: screenHeight * 0.3, // Limit the height to 30% of the screen
     marginBottom: 10,
     padding: 10,
     borderRadius: 10,
 
+  },
+  coursesHeader: {
+    marginBottom: 10,
+    padding: 10,
+    borderRadius: 10,
+  },
+  coursesHeaderText:{
+    fontSize: 24,
+    lineHeight: 22,
+    textAlign: "center",
   },
   largeText: {
     fontSize: 16,
