@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         padding: 15,
         borderRadius: 10,
-        borderWidth: 1,
+        // borderWidth: 1,
         maxHeight: screenHeight * 0.15,
         overflow: "hidden"
     },
