@@ -3,9 +3,8 @@ import loadAssets from "../logics/Assetsloader";
 import { HeaderButton } from "./Buttons";
 import { useState, useEffect } from "react";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import HomeScreen from "../pages/Home";
-import ResultScreen from "../pages/Result";
-export default function Header({ setScreen }) {
+import { Link, Redirect, router } from "expo-router"
+export default function Header() {
     const assets = loadAssets();
     const [search_is_pressed, setPressed] = useState(false);
     const [textInputValue, setTextInputValue] = useState("");
@@ -55,10 +54,9 @@ export default function Header({ setScreen }) {
                     resizeMode="contain"
                 />
             </View>
-
             {/* Right Container with Buttons */}
             <View style={styles.rightContainer}>
-                <HeaderButton onClick={() => { setScreen(<HomeScreen setScreen={setScreen} />) }} content="Home" />
+                <HeaderButton content="Home" url="./index" />
                 {search_is_pressed ? (
                     <View style={{ alignItems: "center", flexDirection: 'row' }}>
                         <FontAwesome name="search" size={24} color="black" />
@@ -71,7 +69,7 @@ export default function Header({ setScreen }) {
                             placeholder="Type to search..."
                             onEndEditing={() => setPressed(false)} // Hide TextInput when user stops editing
                             onSubmitEditing={(value) => {
-                                setScreen(<ResultScreen search={textInputValue} />)
+                                router.navigate({ pathname: "./Result", params: { search: textInputValue } })
                                 setTextInputValue("")
                                 setPressed(false)
                             }}

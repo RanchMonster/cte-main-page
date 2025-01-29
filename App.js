@@ -3,9 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import Header from "./components/Header"
 import { useState } from 'react';
 import { useColorScheme } from 'react-native';
-import Loading from './components/Loading';
+import Loading from './assets/Loading';
 import loadAssets from './logics/Assetsloader';
-import HomeScreen from './pages/Home';
+import HomeScreen from './app/Home';
 import Footer from './components/footer';
 export default function App() {
   const asstes = loadAssets()
@@ -18,10 +18,10 @@ export default function App() {
   } else {
     return (
       <View style={[styles.container, { backgroundColor: asstes.background }]}>
-        <Header setScreen={setScreen} />
+     
         {screen}
         <StatusBar hidden={true} />
-        <Footer></Footer>
+        
 
       </View>
     );

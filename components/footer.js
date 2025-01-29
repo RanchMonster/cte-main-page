@@ -17,9 +17,10 @@ export default function Footer() {
         <Pressable
             onMouseEnter={() => (footerHeight.value = 100)}
             onMouseLeave={() => (footerHeight.value = 60)}
+            style={{cursor:'auto'}}
         >
             <Animated.View style={[styles.footer, animatedFooterStyle, { backgroundColor: assets.primary }]}>
-                <Text style={[styles.footerText, { color: assets.text, fontFamily: assets.boldFont }]}>Footer: Hover to expand!</Text>
+                <Text style={[styles.footerText, { color: assets.text, fontFamily: assets.boldFont }]}>Other options </Text>
             </Animated.View>
         </Pressable>
     );

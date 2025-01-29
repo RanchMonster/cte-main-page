@@ -4,7 +4,7 @@ export type ButtonProps = {
     onClick: () => void
 }
 export type HeaderButtonProps = ButtonProps & {
-    content: String
+    content: string
 
 }
 export function HeaderButton(props: HeaderButtonProps): JSX.Element {
@@ -21,8 +21,8 @@ export function HeaderButton(props: HeaderButtonProps): JSX.Element {
     );
 }
 export type CourseButtonProps = ButtonProps & {
-    name: String
-    description: String
+    name: string
+    description: string
 }
 export function CourseButton(props: CourseButtonProps): JSX.Element {
     const assets = loadAssets()

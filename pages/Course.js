@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
 import { useState, useEffect } from "react";
 import loadAssets from "../logics/Assetsloader";
-import Loading from "../components/Loading";
+import Loading from "../assets/Loading";
 
 export default function CourseScreen({ name, description }) {
     const assets = loadAssets();
