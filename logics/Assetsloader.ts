@@ -9,6 +9,7 @@ type BaseAssets = {
     normFont: String
     boldFont: String
     logo: any
+    backgroundImage: any
 
 }
 let assets: BaseAssets = undefined
@@ -27,7 +28,8 @@ export default function loadAssets(): BaseAssets {
                 background: colors.background,
                 normFont: "Poppins_400Regular",
                 boldFont: "Poppins_700Bold",
-                logo: require("../assets/logo.png")
+                logo: require("../assets/logo.png"),
+                backgroundImage:require("../assets/cte.webp")
             }
         }
     }

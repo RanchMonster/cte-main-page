@@ -56,7 +56,7 @@ export default function Header() {
             </View>
             {/* Right Container with Buttons */}
             <View style={styles.rightContainer}>
-                <HeaderButton content="Home" url="./index" />
+                <HeaderButton content="Home" onClick={()=>router.navigate("./")}/>
                 {search_is_pressed ? (
                     <View style={{ alignItems: "center", flexDirection: 'row' }}>
                         <FontAwesome name="search" size={24} color="black" />

@@ -1,34 +1,39 @@
-import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { useState, useEffect } from "react";
-import loadAssets from "../logics/Assetsloader";
+import useAssets from "../logics/Assetsloader";  // ✅ Use the new hook
 import Loading from "../components/Loading";
-import { router } from "expo-router";
 import { useSearchParams } from "expo-router/build/hooks";
+import Header from "../components/Header";
+import Footer from "../components/footer";
 
 export default function ResultScreen() {
-    const assets = loadAssets();
+    const assets = useAssets(); // ✅ Now managed properly
+    const [loading, setLoading] = useState(true);
+    const [found, setFound] = useState(null);
+    const search = useSearchParams().get("search");
+
+    useEffect(() => {
+        if (!assets) return;  // ✅ Only run if assets are loaded
+
+        setTimeout(() => {
+            setLoading(false);
+            setFound(search?.length > 0 ? "Nothing found" : "No search term provided");
+        }, 2000);
+    }, [assets, search]);
+
     if (!assets) {
         return (
-            <View>
+            <View style={styles.main}>
                 <Loading />
             </View>
         );
-    } else {
-        const search = useSearchParams().get("search")
-        const [loading, setLoading] = useState(true);
-        const [found, setFound] = useState(null);
+    }
 
-        useEffect(() => {
-            // Simulate a delay of 2 seconds for search results
-            setTimeout(() => {
-                setLoading(false);
-                // Simulate that we found nothing for the search term
-                setFound(search.length > 0 ? "Nothing found" : "No search term provided");
-            }, 2000);
-        }, [search]);
+    return (
+        <View style={{ flex: 1, backgroundColor: assets.background }}>
+            <Header />
+            <View style={[styles.main, { backgroundColor: assets.background }]}>
 
-        return (
-            <View style={styles.main}>
                 {loading ? (
                     <View style={[styles.resultContainer, { backgroundColor: assets.surface }]}>
                         <Loading textStyles={{ color: assets.text }} />
@@ -41,8 +46,9 @@ export default function ResultScreen() {
                     </View>
                 )}
             </View>
-        );
-    }
+            <Footer />
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
